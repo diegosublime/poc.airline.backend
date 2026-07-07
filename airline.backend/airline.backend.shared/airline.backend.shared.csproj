@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\airline.backend.shared\airline.backend.shared.csproj" />
-  </ItemGroup>
-
 </Project>
