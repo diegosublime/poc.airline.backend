@@ -1,6 +1,6 @@
 ﻿namespace airline.backend.flights.domain.flight
 {
-    public record FlightSchedule
+    public sealed record FlightSchedule
     {
         public DateTimeOffset DepartureTime { get; private set; }
         public DateTimeOffset ArrivalTime { get; private set; }
@@ -17,7 +17,7 @@
         {
             if (departureTime >= arrivalTime) 
             {
-                throw new FlightScheduleTimeException("deparure time can not happen after arrival time");
+                throw new FlightScheduleTimeDomainException("deparure time can not happen after arrival time");
             }
 
             TimeSpan flightDuration = arrivalTime - departureTime;

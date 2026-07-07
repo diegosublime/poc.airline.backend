@@ -1,6 +1,6 @@
 ﻿namespace airline.backend.flights.domain.flight
 {
-    public record Airport
+    public sealed record Airport
     {
         public string Code { get; private set; }
         public string City { get; private set; }

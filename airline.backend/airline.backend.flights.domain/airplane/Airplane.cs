@@ -1,6 +1,6 @@
 ﻿namespace airline.backend.flights.domain 
 {
-    public class Airplane
+    public sealed class Airplane
     {
     }
 }

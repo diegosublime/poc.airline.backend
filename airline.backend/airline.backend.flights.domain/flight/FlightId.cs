@@ -1,6 +1,6 @@
 ﻿namespace airline.backend.flights.domain 
 {
-    public record FlightId
+    public sealed record FlightId
     {
         public Guid Value { get; private set; }
 

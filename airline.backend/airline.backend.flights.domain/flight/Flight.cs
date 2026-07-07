@@ -1,25 +1,25 @@
 ﻿using airline.backend.flights.domain.flight;
+using airline.backend.shared;
 
 namespace airline.backend.flights.domain
 {
-    public sealed class Flight
+    public sealed class Flight: AggregateRoot<FlightId>
     {
         private Flight(FlightId flightId, 
             FlightCode flightCode, 
             Airport origin, 
             Airport destination, 
             FlightSchedule flightSchedule,
-            AirplaneId airplaneId)
+            AirplaneId airplaneId):base(flightId)
         {
-            FlightId = flightId;
+            Id = flightId;
             Code = flightCode;
             Origin = origin;
             Destination = destination;
             FlightSchedule = flightSchedule;
             AirplaneId = airplaneId;
         }
-
-        public FlightId FlightId { get; private set; }
+         
         public FlightCode Code { get; private set; }
         public Airport Origin { get; private set; }
         public Airport Destination { get; private set; }
@@ -34,15 +34,14 @@ namespace airline.backend.flights.domain
             AirplaneId airplaneId, 
             FlightId? flightId = default)
         {
-            FlightId id = flightId ?? FlightId.Create();
-            //Trigger a domain event
+            FlightId id = flightId ?? FlightId.Create(); 
             return new Flight(id, flightCode, origin, destination, flightSchedule, airplaneId);
         }
 
         public void ChangeFlightSchedule(FlightSchedule newFlightSchedule) 
         {
             FlightSchedule = newFlightSchedule;
-            //Trigger a domain event
+            this.RiseDomainEvent(FlightEvents.FlightScheduleChangedDomainEvent());
         }
     }
 }
