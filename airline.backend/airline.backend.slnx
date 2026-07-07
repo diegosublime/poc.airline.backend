@@ -1,3 +1,11 @@
 <Solution>
+  <Folder Name="/checkin.module/" />
+  <Folder Name="/flights.module/">
+    <Project Path="airline.backend.flights.application/airline.backend.flights.application.csproj" />
+    <Project Path="airline.backend.flights.domain/airline.backend.flights.domain.csproj" />
+    <Project Path="airline.backend.flights.infrastructure/airline.backend.flights.infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/notifications.module/" />
+  <Folder Name="/reservations.module/" />
   <Project Path="airline.backend.api/airline.backend.api.csproj" />
 </Solution>
