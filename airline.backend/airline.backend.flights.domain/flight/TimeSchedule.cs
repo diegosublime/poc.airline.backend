@@ -1,28 +1,30 @@
-﻿namespace airline.backend.flights.domain.flight
+﻿using System.Runtime.CompilerServices;
+
+namespace airline.backend.flights.domain.flight
 {
     public sealed record FlightSchedule
-    {
-        public DateTimeOffset DepartureTime { get; private set; }
-        public DateTimeOffset ArrivalTime { get; private set; }
-        public TimeSpan FlightDuration { get; set; }
+    { 
+        public DateTimeOffset DepartureDateTime { get; private set; }
+        public DateTimeOffset ArrivalDateTime { get; private set; }
+        public TimeSpan FlightDuration { get; private set; }
 
-        private FlightSchedule(DateTimeOffset departureTime, DateTimeOffset arrivalTime, TimeSpan flightDuration)
+        private FlightSchedule(DateTimeOffset departureDateTime, DateTimeOffset arrivalDateTime, TimeSpan flightDuration)
         {
-            DepartureTime = departureTime;
-            ArrivalTime = arrivalTime;
+            DepartureDateTime = departureDateTime;
+            ArrivalDateTime = arrivalDateTime;
             FlightDuration = flightDuration;
         }
 
-        public static FlightSchedule Create(DateTimeOffset departureTime, DateTimeOffset arrivalTime)
+        public static FlightSchedule Create(DateTimeOffset departureDateTime, DateTimeOffset arrivalDateTime)
         {
-            if (departureTime >= arrivalTime) 
+            if (departureDateTime >= arrivalDateTime) 
             {
                 throw new FlightScheduleTimeDomainException("deparure time can not happen after arrival time");
             }
 
-            TimeSpan flightDuration = arrivalTime - departureTime;
+            TimeSpan flightDuration = arrivalDateTime - departureDateTime;
 
-            return new FlightSchedule(departureTime, arrivalTime, flightDuration);
+            return new FlightSchedule(departureDateTime, arrivalDateTime, flightDuration);
         }
     }
 }
