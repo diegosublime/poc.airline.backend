@@ -6,7 +6,11 @@
     <Project Path="airline.backend.flights.infrastructure/airline.backend.flights.infrastructure.csproj" />
   </Folder>
   <Folder Name="/notifications.module/" />
-  <Folder Name="/reservations.module/" />
+  <Folder Name="/reservations.module/">
+    <Project Path="airline.backend.reservations.application/airline.backend.reservations.application.csproj" />
+    <Project Path="airline.backend.reservations.domain/airline.backend.reservations.domain.csproj" />
+    <Project Path="airline.backend.reservations.infrastructure/airline.backend.reservations.infrastructure.csproj" />
+  </Folder>
   <Project Path="airline.backend.api/airline.backend.api.csproj" />
   <Project Path="airline.backend.shared/airline.backend.shared.csproj" />
 </Solution>

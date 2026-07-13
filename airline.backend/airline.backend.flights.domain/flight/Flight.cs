@@ -48,7 +48,7 @@ namespace airline.backend.flights.domain
         public void ChangeFlightSchedule(FlightSchedule newFlightSchedule) 
         {
             FlightSchedule = newFlightSchedule;
-            this.RiseDomainEvent(FlightEvents.FlightScheduleChangedDomainEvent());
+            this.RiseDomainEvent(new FlightScheduleChangedDomainEvent());
         }
 
         public void ReserveSeats(int seatsToReserve) 
